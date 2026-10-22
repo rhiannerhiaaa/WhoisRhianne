@@ -1,0 +1,594 @@
+/* 
+========================================================================
+   MY WEBSITE STYLESHEET
+   Theme: Cute, Pink, Coquette, Music
+   Made by: Rhianne (Rika)
+========================================================================
+*/
+
+/* --- 1. BASIC RESET & GLOBAL STYLES --- */
+/* This makes sure padding and borders don't make elements bigger than they should be */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    /* Using standard fonts so it looks pretty on any computer */
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+    margin: 0;
+    padding: 0;
+    /* Soft pink gradient background */
+    background-color: #ffebf0;
+    background: linear-gradient(135deg, #ffebf0 0%, #ffc0cb 100%);
+    background-attachment: fixed;
+    color: #6b4c5a; /* Dark rose text so it's easy to read */
+    min-height: 100vh;
+    overflow-x: hidden; /* Stops side scrolling */
+    
+    /* THE OUTER PAGE BORDER: I used an inset shadow to make a pink border around the screen */
+    box-shadow: inset 0 0 0 12px #ffb6c1; 
+}
+
+
+/* --- 2. FLOATING BACKGROUND ELEMENTS --- */
+/* This keeps the notes and hearts stuck in the background */
+.floating-elements {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Lets me click things through them */
+    z-index: -1;
+    overflow: hidden;
+}
+
+/* Setting up the animation for floating up */
+.float-item {
+    position: absolute;
+    bottom: -50px;
+    animation: floatUp 12s infinite linear; 
+}
+
+/* The colors and sizes of the floating things */
+.float-note { font-size: 2rem; color: #333333; } 
+.float-white-heart { font-size: 2rem; color: #ffffff; text-shadow: 0 0 5px #ffb6c1; } 
+.float-pink-heart { font-size: 2rem; color: #ff69b4; } 
+.float-ribbon { font-size: 2.5rem; } 
+
+/* Positioning each item so they are scattered everywhere */
+.float-item:nth-child(1) { left: 5%; animation-duration: 11s; animation-delay: 0s; }
+.float-item:nth-child(2) { left: 15%; animation-duration: 15s; animation-delay: 2s; }
+.float-item:nth-child(3) { left: 25%; animation-duration: 9s; animation-delay: 5s; }
+.float-item:nth-child(4) { left: 35%; animation-duration: 14s; animation-delay: 1s; }
+.float-item:nth-child(5) { left: 45%; animation-duration: 10s; animation-delay: 4s; }
+.float-item:nth-child(6) { left: 55%; animation-duration: 16s; animation-delay: 3s; }
+.float-item:nth-child(7) { left: 65%; animation-duration: 12s; animation-delay: 6s; }
+.float-item:nth-child(8) { left: 75%; animation-duration: 13s; animation-delay: 2s; }
+.float-item:nth-child(9) { left: 85%; animation-duration: 10s; animation-delay: 7s; }
+.float-item:nth-child(10) { left: 95%; animation-duration: 14s; animation-delay: 0s; }
+.float-item:nth-child(11) { left: 10%; animation-duration: 18s; animation-delay: 3s; }
+.float-item:nth-child(12) { left: 40%; animation-duration: 11s; animation-delay: 8s; }
+.float-item:nth-child(13) { left: 70%; animation-duration: 15s; animation-delay: 5s; }
+.float-item:nth-child(14) { left: 90%; animation-duration: 12s; animation-delay: 1s; }
+
+/* The actual animation that makes them float up */
+@keyframes floatUp {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+}
+
+
+/* --- 3. HEADERS & TEXT FORMATTING --- */
+header {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+header h1 {
+    /* Using Georgia for that fancy, elegant look */
+    font-family: Georgia, 'Times New Roman', Times, serif; 
+    font-style: italic; 
+    font-size: 3.5rem; 
+    margin: 0;
+    color: #d87093;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+}
+
+header p {
+    font-size: 1.3rem;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* I wanted the bolded text to look like it's glowing */
+strong {
+    background-color: #ffffff;
+    box-shadow: 0 0 10px 5px rgba(255, 182, 193, 0.8); 
+    padding: 2px 6px;
+    border-radius: 8px;
+    color: #d87093;
+}
+
+
+/* --- 4. FRONT PAGE (INDEX) LAYOUT & BIG IMAGES --- */
+.front-page {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    
+    /* THE FIX: Adds space at the bottom so the buttons fit above the menu */
+    padding-top: 40px;
+    padding-bottom: 100px; 
+}
+
+/* Centers the title and buttons in the middle */
+.center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10; /* Keeps buttons on top */
+}
+
+.front-page header {
+    padding-bottom: 50px; 
+}
+
+/* The styling for the big side images */
+.big-side-img {
+    position: absolute;
+    top: 50%; /* Centers them vertically */
+    transform: translateY(-50%); 
+    width: 18vw;
+    max-width: 280px; 
+    height: auto;
+    
+    border: 8px solid #ffffff; 
+    border-radius: 20px; 
+    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.4); 
+    z-index: 1; 
+    object-fit: cover; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect to make the side images pop! */
+.big-side-img:hover {
+    transform: translateY(-50%) scale(1.05); 
+    box-shadow: 0 15px 40px rgba(255, 20, 147, 0.6); 
+}
+
+/* Positions the left image */
+.left-img { left: 15vw; }
+
+/* Positions the right image */
+.right-img { right: 15vw; }
+
+/* Hide the big images on small phone screens so they don't cover the buttons */
+@media (max-width: 900px) {
+    .big-side-img { display: none; }
+}
+
+/* The container for the big front page buttons */
+.heart-nav {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    gap: 30px; 
+}
+
+/* The cute pill-shaped buttons */
+.heart-nav a {
+    text-decoration: none;
+    color: white;
+    font-family: 'Trebuchet MS', sans-serif;
+    font-size: 1.6rem; 
+    font-weight: bold;
+    padding: 20px 50px; 
+    background-color: #ff69b4; 
+    border-radius: 50px; 
+    
+    /* The double border trick */
+    border: 5px solid #ffffff; 
+    outline: 4px solid #ffb6c1; 
+    outline-offset: -8px;
+    
+    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.5); 
+    transition: all 0.3s ease; 
+    width: 350px; 
+    text-align: center;
+}
+
+/* When the mouse hovers over the button */
+.heart-nav a:hover {
+    background-color: #ff1493; 
+    transform: translateY(-5px) scale(1.05); 
+    box-shadow: 0 12px 25px rgba(255, 20, 147, 0.8);
+}
+
+
+/* --- 5. MAIN CONTENT PAGES (About, Songs, Hobbies) --- */
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    /* Added padding so content doesn't touch the bottom nav */
+    padding-bottom: 100px; 
+}
+
+/* The big white bubble that holds everything */
+.content-card {
+    background-color: rgba(255, 255, 255, 0.95); 
+    border-radius: 50px; 
+    padding: 20px; 
+    text-align: center;
+    border: 6px solid #ffffff;
+    box-shadow: 0 15px 35px rgba(255, 105, 180, 0.3);
+}
+
+/* The dashed line inside the card */
+.inner-border {
+    border: 3px dashed #ffb6c1; 
+    border-radius: 35px; 
+    padding: 40px 30px; 
+}
+
+.banner-img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    border: 4px solid #fff0f5;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.content-card h2 {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 2.5rem;
+    color: #d87093;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.content-card p {
+    font-size: 1.1rem; 
+    line-height: 1.6;
+}
+
+
+/* --- 6. ABOUT PAGE SPECIFIC --- */
+/* The little bubbles for Name, Age, City */
+.info-bubble {
+    display: inline-block;
+    border: 2px solid #d87093;
+    padding: 10px 20px;
+    border-radius: 20px; 
+    background-color: #fff0f5;
+    margin: 5px;
+    box-shadow: 2px 2px 8px rgba(255, 182, 193, 0.6);
+}
+
+/* The story bubble holding the long paragraphs */
+.story-bubble {
+    background-color: #fff0f5; 
+    border: 3px solid #e08492; 
+    border-radius: 30px; 
+    padding: 25px 30px; 
+    margin: 20px auto 40px auto; 
+    text-align: left; 
+    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.2); 
+    max-width: 95%; 
+}
+
+.story-bubble p {
+    margin-bottom: 15px;
+    line-height: 1.7;
+}
+
+.story-bubble p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* Making the pictures form a grid */
+.heart-photo-grid {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    gap: 20px; /* Space between the two rows */
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.photo-row {
+    display: flex; 
+    justify-content: center;
+    flex-wrap: wrap; /* Allows images to drop to a new line on small screens */
+    gap: 20px; /* Space between images in a row */
+}
+
+/* Making the images bigger */
+.heart-photo-grid img {
+    width: 130px; /* Increased from 110px */
+    height: 130px; /* Increased from 110px */
+    object-fit: cover;
+    border-radius: 25px; 
+    border: 4px solid #ffb6c1; 
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.5); 
+    transition: all 0.3s ease;
+}
+
+/* Hover effect for the silly photos */
+.heart-photo-grid img:hover {
+    transform: scale(1.15) rotate(5deg);
+    border-color: #ff1493;
+    box-shadow: 0 8px 25px rgba(255, 20, 147, 0.7);
+    z-index: 10;
+}
+
+
+/* --- 7. SONGS PAGE SPECIFIC --- */
+.song-container {
+    display: flex;
+    flex-direction: column; /* Forces the songs to stack vertically */
+    gap: 25px; 
+    margin-top: 30px;
+    width: 100%;
+}
+
+/* The bubbles for each song */
+.song-bubble {
+    display: flex;
+    flex-direction: row; /* Forces image to be on the left, text on right */
+    align-items: center; /* Centers the text vertically with the image */
+    background-color: #fff0f5;
+    border-radius: 30px; 
+    padding: 20px 25px;
+    border: 3px solid #ffb6c1;
+    outline: 2px solid #ffffff; /* Double border effect */
+    outline-offset: -6px; 
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2);
+    transition: 0.3s;
+    width: 100%; /* Ensures it takes up the full width of the container */
+}
+
+.song-bubble:hover {
+    transform: scale(1.02); 
+    background-color: #ffe4e1;
+}
+
+.album-cover {
+    width: 100px; /* Slightly bigger to look balanced */
+    height: 100px;
+    border-radius: 50%; 
+    object-fit: cover;
+    margin-right: 25px; /* Pushes the text away from the image */
+    border: 4px solid #ffb6c1;
+    flex-shrink: 0; /* Prevents the image from getting squished */
+}
+
+.song-info {
+    text-align: left;
+    flex-grow: 1; /* Allows the text to take up the rest of the space */
+}
+
+.song-title {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    margin: 0 0 5px 0;
+    color: #d87093;
+}
+
+.song-artist {
+    font-size: 1.1rem;
+    margin: 0;
+    color: #6b4c5a;
+    line-height: 1.5;
+}
+
+
+/* --- 8. HOBBIES PAGE SPECIFIC --- */
+.hobby-grid {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    gap: 15px; 
+    margin-top: 25px;
+    margin-bottom: 30px;
+}
+
+.hobby-box {
+    background-color: #fff0f5; 
+    color: #d87093; 
+    font-family: 'Trebuchet MS', sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 30px; 
+    border: 2px solid #ffb6c1; 
+    box-shadow: 0 4px 10px rgba(255, 105, 180, 0.3);
+    transition: all 0.3s ease; 
+    cursor: default; 
+}
+
+.hobby-box:hover {
+    background-color: #ff69b4; 
+    color: white; 
+    border-color: #ffffff; 
+    transform: translateY(-5px) scale(1.05); 
+    box-shadow: 0 8px 20px rgba(255, 20, 147, 0.6); 
+}
+
+
+/* --- 9. GENERAL BUTTONS --- */
+/* The back button used inside the content cards */
+.back-btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 25px;
+    background-color: #ffb6c1;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-family: 'Trebuchet MS', sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: 0.3s;
+    border: 3px solid white;
+}
+
+.back-btn:hover {
+    background-color: #ff69b4;
+}
+
+
+/* --- 10. STICKY BOTTOM NAVIGATION BAR --- */
+/* This is the floating menu at the bottom of the screen */
+.bottom-nav {
+    position: fixed;
+    bottom: 25px; 
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    background-color: rgba(255, 255, 255, 0.95); 
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 3px solid #ffb6c1; 
+    box-shadow: 0 10px 25px rgba(255, 105, 180, 0.5); 
+    z-index: 999; /* Ensures it floats above everything else */
+}
+
+/* Style all the links in the bottom menu */
+.bottom-nav a {
+    text-decoration: none;
+    color: #d87093;
+    font-family: 'Trebuchet MS', sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.bottom-nav a:hover {
+    background-color: #ffe4e1;
+    color: #ff1493;
+}
+
+/* The "Back to Home" button */
+.bottom-nav a.home-btn {
+    background-color: #ffb6c1;
+    color: white;
+}
+
+.bottom-nav a.home-btn:hover {
+    background-color: #ff69b4;
+}
+
+/* The Active Page (Highlights the page you are currently on) */
+.bottom-nav a.active {
+    background-color: #ff69b4;
+    color: white;
+    box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+}
+
+/* If the screen is small (like a phone), stack the links */
+@media (max-width: 600px) {
+    .bottom-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 90%;
+        bottom: 10px;
+    }
+}
+
+/* --- 13. PLAYLIST SECTION --- */
+
+/* Centers the new section */
+.playlist-section {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* The pink bubble for the text */
+.playlist-text-bubble {
+    background-color: #fff0f5;
+    border: 2px solid #ffb6c1;
+    border-radius: 20px;
+    padding: 15px 25px;
+    font-weight: bold;
+    color: #d87093;
+    box-shadow: 0 4px 10px rgba(255, 105, 180, 0.2);
+    font-size: 1.1rem;
+    text-align: center;
+    max-width: 90%;
+}
+
+/* Container for the playlist cards */
+.playlist-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px; 
+    margin-bottom: 30px;
+}
+
+/* The card that holds the square image and the code */
+.playlist-bubble {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    background-color: #fff0f5; 
+    border: 3px solid #ffb6c1;
+    border-radius: 25px;
+    padding: 15px;
+    box-shadow: 0 4px 12px rgba(255, 105, 180, 0.3);
+    transition: all 0.3s ease;
+    width: 220px; 
+}
+
+.playlist-bubble:hover {
+    transform: translateY(-5px) scale(1.05);
+    border-color: #ff1493;
+    box-shadow: 0 8px 20px rgba(255, 20, 147, 0.5);
+}
+
+/* The square image */
+.playlist-square-img {
+    width: 100%;
+    aspect-ratio: 1 / 1; 
+    object-fit: cover;
+    border-radius: 15px;
+    border: 2px solid #ffffff;
+    margin-bottom: 15px; 
+}
+
+/* The Spotify Code banner */
+.playlist-code-img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+/* Text inside the playlist bubble */
+.playlist-bubble h4 {
+    margin: 0;
+    font-family: Georgia, serif;
+    font-style: italic;
+    color: #d87093;
+    font-size: 1.1rem;
+    text-align: center;
+}
