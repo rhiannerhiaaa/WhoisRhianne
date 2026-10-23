@@ -132,3 +132,64 @@ ul { color: #d87093; font-weight: bold; margin-top: 10px;}
     margin-bottom: 20px;
     font-size: 2rem;
 }
+
+/* --- 8. STICKY BOTTOM NAVIGATION BAR --- */
+/* This is the floating menu at the bottom of the screen */
+.bottom-nav {
+    position: fixed;
+    bottom: 25px; 
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    background-color: rgba(255, 255, 255, 0.95); 
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 3px solid #ffb6c1; 
+    box-shadow: 0 10px 25px rgba(255, 105, 180, 0.5); 
+    z-index: 999; /* Ensures it floats above everything else */
+}
+
+/* Style all the links in the bottom menu */
+.bottom-nav a {
+    text-decoration: none;
+    color: #d87093;
+    font-family: 'Trebuchet MS', sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.bottom-nav a:hover {
+    background-color: #ffe4e1;
+    color: #ff1493;
+}
+
+/* The "Back to Home" button */
+.bottom-nav a.home-btn {
+    background-color: #ffb6c1;
+    color: white;
+}
+
+.bottom-nav a.home-btn:hover {
+    background-color: #ff69b4;
+}
+
+/* The Active Page (Highlights the page you are currently on) */
+.bottom-nav a.active {
+    background-color: #ff69b4;
+    color: white;
+    box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+}
+
+/* If the screen is small (like a phone), stack the links */
+@media (max-width: 600px) {
+    .bottom-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 90%;
+        bottom: 10px;
+    }
+}
