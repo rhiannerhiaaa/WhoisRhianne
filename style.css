@@ -1,0 +1,134 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+    margin: 0;
+    padding: 0;
+    background-color: #ffebf0;
+    background: linear-gradient(135deg, #ffebf0 0%, #ffc0cb 100%);
+    background-attachment: fixed;
+    color: #6b4c5a; 
+    min-height: 100vh;
+    box-shadow: inset 0 0 0 12px #ffb6c1; 
+    padding-top: 40px;
+    padding-bottom: 100px;
+}
+
+/* --- 2. FLOATING BACKGROUND --- */
+.floating-elements {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: -1; overflow: hidden;
+}
+.float-item { position: absolute; bottom: -50px; animation: floatUp 12s infinite linear; }
+.float-note { font-size: 2rem; color: #333; } 
+.float-white-heart { font-size: 2rem; color: #fff; text-shadow: 0 0 5px #ffb6c1; } 
+.float-pink-heart { font-size: 2rem; color: #ff69b4; } 
+.float-ribbon { font-size: 2.5rem; } 
+.float-item:nth-child(1) { left: 5%; animation-duration: 11s; }
+.float-item:nth-child(2) { left: 25%; animation-duration: 15s; }
+.float-item:nth-child(3) { left: 45%; animation-duration: 9s; }
+.float-item:nth-child(4) { left: 65%; animation-duration: 14s; }
+.float-item:nth-child(5) { left: 85%; animation-duration: 10s; }
+
+@keyframes floatUp {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+}
+
+/* --- 3. HEADERS --- */
+header { text-align: center; padding: 20px; margin-bottom: 20px; }
+header h1 {
+    font-family: Georgia, serif; font-style: italic; font-size: 3rem; margin: 0;
+    color: #d87093; text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+}
+
+/* --- 4. CARDS & LAYOUT --- */
+main { max-width: 1000px; margin: 0 auto; padding: 20px; }
+.content-card {
+    background-color: rgba(255, 255, 255, 0.95); 
+    border-radius: 50px; padding: 20px; text-align: center;
+    border: 6px solid #ffffff; box-shadow: 0 15px 35px rgba(255, 105, 180, 0.3);
+}
+.inner-border { border: 3px dashed #ffb6c1; border-radius: 35px; padding: 30px; overflow-x: auto; }
+
+/* --- 5. STRICT TABLE STYLING --- */
+table {
+    width: 100%;
+    border-collapse: collapse; /* This makes the borders touch like a grid */
+    background-color: white;
+}
+
+th, td {
+    border: 2px solid #ffb6c1; /* Solid pink grid lines */
+    padding: 15px;
+    text-align: center; /* Centers the text in the columns */
+    font-size: 1.1rem;
+}
+
+th {
+    background-color: #ff69b4; /* Darker pink for headers */
+    color: white;
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 1.2rem;
+}
+
+/* --- 6. LIST SECTION --- */
+.list-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    text-align: left;
+    margin-top: 20px;
+}
+
+.student-list {
+    background-color: #fff0f5;
+    padding: 20px;
+    border-radius: 20px;
+    border: 2px solid #ffb6c1;
+    width: 280px;
+}
+
+.student-list h3 {
+    margin-top: 0;
+    color: #d87093;
+    font-family: Georgia, serif;
+    border-bottom: 2px dashed #ffb6c1;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+ol, ul { margin: 0; padding-left: 20px; font-size: 0.95rem; line-height: 1.5; }
+ul { color: #d87093; font-weight: bold; margin-top: 10px;}
+
+/* --- 7. VIDEO SECTION --- */
+.video-container {
+    margin-bottom: 30px; /* Space between the video card and the table card */
+}
+
+/* Style for the video element itself */
+.group-video {
+    width: 100%;
+    max-width: 800px; 
+    border-radius: 20px; 
+    border: 4px solid #ffb6c1; 
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3); 
+    background-color: #000; 
+}
+
+/* Optional: Style the heading above the video */
+.video-title {
+    font-family: Georgia, serif;
+    color: #d87093;
+    font-style: italic;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
